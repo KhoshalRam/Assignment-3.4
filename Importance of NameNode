@@ -1,0 +1,23 @@
+NameNode: 
+A NameNode contains two important information. They are:
+                                                1) Hadoop File System Tree and Metadata
+                                                2) In-memory mapping of blocks and corresponding data node.
+ 
+The NameNode is the center-piece of an HDFS file system. It keeps the directory tree of all files 
+in the file system, and tracks where across the cluster the file data is kept. It does not the data of these files itself.
+
+Client applications talkk to the Name Node whenever they wish to locate a file or when they want to add or copy or move or delete a file.
+
+The NameNode is a Single Point of failure for the HDFS cluster. HDFS is not currently a High Availablity system. When the NameNode goes 
+down, the file system goes offline. There is an optional Secondary NameNode that can be hosted on a seperate machine. It only creates checkpoints
+of the namespace by merging the edits file into the fsimage file and does not provide any real redundancy. Hadop has a BackupNameNode that is part of a plan
+to have a name service. 
+
+Name Node is the Master node of the HDFS file system in Hadoop.
+- It stores metadata and informations of its slave nodes.
+- Namenode also maintains the informatin of all addresses of the files or blocks in the file system.
+- Namenode don't store the data of all of its slave nodes.
+- NameNode knows how to construct the file from blocks kept in different cluster.s.
+
+HIGH Availability ensures when the active namenode goes down, Secondary namenode  necomes Active.
+
